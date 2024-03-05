@@ -1,0 +1,20 @@
+name: Test Workflow
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Script shell
+        run: echo "Hello World¡"
+
+      - name: Get code
+        uses: actions/checkout@v4
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  
+      - name: Install dependencies
+        run: npm ci
+      - name: run tests
+        run: npm test
